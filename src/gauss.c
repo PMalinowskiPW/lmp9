@@ -8,7 +8,8 @@
  * Zwraca 1 - macierz osobliwa - dzielenie przez 0
  */
 int eliminate(Matrix *mat, Matrix *b){
-for (int k=0; k < mat->r; k++){
+	for (int k=0; k < mat->r; k++){
+			if (mat->data[k][k]!=0)
 		eliminacja(k,mat,b);	
 		}
 return 0;
