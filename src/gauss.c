@@ -8,6 +8,22 @@
  * Zwraca 1 - macierz osobliwa - dzielenie przez 0
  */
 int eliminate(Matrix *mat, Matrix *b){
+
+	int max = mat->data[0][0];
+	int row = 0;
+	for (int i = 1; i < mat->r; i++) {
+		if (mat->data[i][0] > max){
+			max = mat->data[i][0];
+			row = i;
+		}
+	}
+
+	if (row != 0) {
+		double * tmp = mat[0];
+		mat[0] = mat[row];
+ 		mat[row] = tmp;
+	}
+	
 	for (int k=0; k < mat->r; k++){
 		change_rows(k,mat,b);
         	if (mat->data[k][k] == 0)
