@@ -19,9 +19,9 @@ int eliminate(Matrix *mat, Matrix *b){
 	}
 
 	if (row != 0) {
-		double * tmp = mat[0];
-		mat[0] = mat[row];
- 		mat[row] = tmp;
+		double * tmp = mat->data[0];
+		mat->data[0] = mat->data[row];
+ 		mat->data[row] = tmp;
 	}
 	
 	for (int k=0; k < mat->r; k++){
