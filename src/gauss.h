@@ -9,4 +9,5 @@
  */
 int eliminate(Matrix *mat, Matrix *b);
 void eliminacja(int k, Matrix *mat , Matrix *b);
+void change_rows(int k, Matrix *mat, Matrix *b);
 #endif

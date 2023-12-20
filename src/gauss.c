@@ -9,7 +9,9 @@
  */
 int eliminate(Matrix *mat, Matrix *b){
 	for (int k=0; k < mat->r; k++){
-			if (mat->data[k][k]!=0)
+		change_rows(k,mat,b);
+        	if (mat->data[k][k] == 0)
+			return 1;
 		eliminacja(k,mat,b);	
 		}
 return 0;
@@ -29,3 +31,23 @@ void eliminacja(int k,Matrix *mat, Matrix *b){
 
 }
 
+void change_rows(int k,Matrix *mat, Matrix *b){
+	int i=0;
+ 	int z=k;
+	double temp;
+	int j;
+	while(i<mat->r){
+		if (mat->data[i][k] >mat->data[z][k]){
+			z=i;
+		}
+		i++;
+	}
+    	temp = b->data[k][0];
+	b->data[k][0] =  b->data[z][0];
+	b->data[z][0] = temp;
+	for(j=k; j < mat->c; j++){
+		temp = mat->data[k][j];
+		mat->data[k][j] = mat->data[z][j];
+		mat->data[z][j] = temp;	
+	}
+}
