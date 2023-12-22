@@ -8,10 +8,20 @@
  * Zwraca 1 - macierz osobliwa - dzielenie przez 0
  */
 int eliminate(Matrix *mat, Matrix *b){
+	if (mat->r!=mat->c){
+		fprintf(stderr, "Błąd nieprawidłowych rozmiarów macierzy, macierz A nie jest kwadratowa\n");
+		return 1;
+	}
+	if (mat->r!=b->r){
+		fprintf(stderr, "Błąd nieprawidłowych rozmiarów macierzy, macierz A i b nie maja takiej samej liczby wierszy\n");
+		return 1;
+	}
 	for (int k=0; k < mat->r; k++){
 		change_rows(k,mat,b);
-        	if (mat->data[k][k] == 0)
+        	if (mat->data[k][k] == 0){
+			fprintf(stderr, "macierz osobliwa - dzielenie przez 0\n");
 			return 1;
+		}
 		eliminacja(k,mat,b);	
 		}
 return 0;
